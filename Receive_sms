@@ -1,0 +1,26 @@
+#include <lpc21xx.h>
+#include "header.h"
+int main()
+{
+	//lcd_init();
+	uart0_init(9600);
+	{
+		s8 rec[100],*p,*q;
+		s8 msg[100];
+		uart0_tx_string("RECEIVING MESSAGE\r\n");
+		uart0_rx_string(rec,100);
+		p=rec+20;
+		q=msg;
+		while(*p)
+		{
+			*q=*p;
+			q++;
+			p++;
+		}
+		
+		uart0_tx_string(p);
+		//uart0_rx_string(time);
+		//uart0_tx_string(time);
+		
+	}
+}
